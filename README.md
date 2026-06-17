@@ -37,7 +37,6 @@ The preprocessing pipeline performs:
 4. Binary label validation.
 5. Duplicate guide–target pair handling.
 6. Guide-disjoint train/validation/test splitting.
-7. External benchmark construction.
 
 By default, duplicate guide–target pairs with conflicting labels are removed, while duplicate pairs with the same label are collapsed.
 Run the following commands from the project root directory:
@@ -69,7 +68,7 @@ The main implementation files are:
 ## Model Training
 Model training is controlled by:  
 
-`configs/train/full_model.yaml`  
+`configs/train/train_model.yaml`  
 
 This configuration file controls:  
 
@@ -92,7 +91,7 @@ The main evaluation metric is AUPRC. AUROC and other classification metrics are 
 
 Training outputs are saved under:
 
-`results/full_model/`
+`results/PriMPT/`
 
 ## Model Interpretation
 PriMPT provides Integrated Gradients-based interpretation for pair-prior descriptors.
