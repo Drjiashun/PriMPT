@@ -14,22 +14,22 @@ A minimal environment can be installed with:
 ```bash
 pip install -r requirements.txt  
 ```
-The recommended requirements.txt includes:
-numpy==2.1.2
-pandas==2.3.1
-scipy==1.16.1
-scikit-learn==1.7.2
-PyYAML==6.0.2
-torch==2.7.1+cu118
-tqdm==4.67.1
-matplotlib==3.10.7
-openpyxl==3.1.5
-tensorboard==2.20.0
-The original experiments were conducted with PyTorch 2.7.1 and CUDA 11.8.
+The recommended requirements.txt includes:  
+numpy==2.1.2  
+pandas==2.3.1  
+scipy==1.16.1  
+scikit-learn==1.7.2  
+PyYAML==6.0.2  
+torch==2.7.1+cu118  
+tqdm==4.67.1  
+matplotlib==3.10.7  
+openpyxl==3.1.5  
+tensorboard==2.20.0  
+The original experiments were conducted with PyTorch 2.7.1 and CUDA 11.8.  
 ## Data Preprocessing
 Data preprocessing is controlled by YAML files under:
-configs/data/
-The preprocessing pipeline performs:
+`configs/data/`
+The preprocessing pipeline performs:  
 
 1. Loading of raw CRISPR/Cas9 guide–target activity datasets.
 2. Sequence normalization and uppercase conversion.
@@ -41,17 +41,17 @@ The preprocessing pipeline performs:
 
 By default, duplicate guide–target pairs with conflicting labels are removed, while duplicate pairs with the same label are collapsed.
 Run the following commands from the project root directory:
-
+```bash
 python scripts/prepare_data.py --config configs/split/II4.yaml
 python scripts/prepare_data.py --config configs/split/II5.yaml
 python scripts/prepare_data.py --config configs/split/HEK293T.yaml
 python scripts/prepare_data.py --config configs/split/K562.yaml
 python scripts/prepare_data.py --config configs/split/CRISPOR.yaml
 python scripts/prepare_data.py --config configs/split/external_benchmark.yaml
-
+```
 The processed datasets are saved under:
 
-data/processed/
+`data/processed/`
 ## Model Overview
 PriMPT represents each aligned guide–target sequence pair as multi-scale paired tokens:
 
