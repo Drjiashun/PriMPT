@@ -1,1 +1,2 @@
-# PriMPT
+## PriMPT: Prior-Informed Multi-Scale Paired-Token Representation Learning for CRISPR–Cas9 Off-Target Activity Classification
+PriMPT is a prior-informed deep learning framework for CRISPR–Cas9 off-target activity classification. The model represents aligned sgRNA–DNA sequence pairs as multi-scale paired tokens, including 1-gram, 2-gram, and 3-gram guide–target paired tokens. Mechanism-related pair-prior descriptors are injected into token representations to improve the modeling of guide–target pairing status, mismatch chemistry, local mismatch topology, PAM-related context, and sequence-level mismatch burden.  
