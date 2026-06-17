@@ -60,18 +60,18 @@ PriMPT represents each aligned guide–target sequence pair as multi-scale paire
 3-gram paired tokens represent short-range local mismatch configurations.
 
 For each scale, PriMPT constructs scale-aligned pair-prior descriptors and injects them into paired-token embeddings. The encoded representations are processed by a Transformer encoder and a local CNN residual module, followed by a classification head for binary activity prediction.
-The main implementation files are:
-primpt/priors.py
-primpt/datasets.py
-primpt/model.py
-primpt/training.py
-primpt/experiments.py
+The main implementation files are:  
+`primpt/priors.py`  
+`primpt/datasets.py`  
+`primpt/model.py`  
+`primpt/training.py`  
+`primpt/experiments.py`  
 ## Model Training
-Model training is controlled by:
+Model training is controlled by:  
 
-configs/train/full_model.yaml
+`configs/train/full_model.yaml`  
 
-This configuration file controls:
+This configuration file controls:  
 
 selected datasets;
 fold indices;
@@ -85,36 +85,37 @@ early stopping;
 checkpoint and result output paths.
 
 Run training with:
-
+```bash
 python scripts/train.py --config configs/train/train_model.yaml
+```
 The main evaluation metric is AUPRC. AUROC and other classification metrics are also reported.
 
 Training outputs are saved under:
 
-results/full_model/
+`results/full_model/`
 
 ## Model Interpretation
 PriMPT provides Integrated Gradients-based interpretation for pair-prior descriptors.
 
 The interpretation pipeline computes attribution with respect to pair-prior tensors only, while keeping paired-token identities fixed. The attribution target is the active-class logit. This allows the analysis to identify which prior descriptors contribute positively or negatively to predicted cleavage activity.
 
-The interpretation configuration file is:
+The interpretation configuration file is:  
 
-configs/explain/activity_relevance.yaml
+`configs/explain/activity_relevance.yaml`  
 
-Run interpretation with:
-
+Run interpretation with:  
+```bash
 python scripts/explain.py --config configs/explain/activity_relevance.yaml
+```
+The final interpretation results are saved under:  
 
-The final interpretation results are saved under:
+`results/explain/activity_relevance_development_macro_average/`  
 
-results/explain/activity_relevance_development_macro_average/
+The main output files are:  
 
-The main output files are:
-
-global_activity_relevance.csv
-local_activity_relevance.csv
-local_position_activity_relevance.csv
+`global_activity_relevance.csv`  
+`local_activity_relevance.csv`  
+`local_position_activity_relevance.csv`  
 
 ## Citation
 
