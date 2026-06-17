@@ -1,0 +1,64 @@
+runtime:
+  device: cuda:0
+  cuda_visible_devices: null
+  num_workers: 4
+
+model:
+  seq_len_no_cls: 23
+  pam_len: 3
+  canonical_pam: NGG
+  d_model: 256
+  nhead: 8
+  num_layers: 4
+  dropout: 0.2
+  cnn_reduce_dim: 196
+  cnn_channels: 64
+  cnn_dropout: 0.15
+  prior_component_dropout: 0.05
+
+ig:
+  target_class: 1
+  ig_steps: 32
+  batch_size: 64
+  sample_filter: positive
+  threshold: 0.5
+  max_batches: null
+
+data:
+  seeds: [0, 42, 90, 1024, 2026]
+  development_datasets:
+#    - HEK293T
+    - K562
+#    - II4
+#    - II5
+#    - CRISPOR
+  datasets:
+    HEK293T:
+      folds: [1, 2, 3, 4, 5, 6]
+      test_csv_pattern: data/processed/HEK293T_6fold/HEK293T_Fold{fold}_Test.csv
+      checkpoint_pattern: results/PriMPT/HEK293T/fold{fold}/checkpoints/HEK293T_fold{fold}_seed{seed}.pth
+    K562:
+      folds: [1, 2, 3, 4]
+      test_csv_pattern: data/processed/K562_4fold/K562_Fold{fold}_Test.csv
+      checkpoint_pattern: results/PriMPT/K562/fold{fold}/checkpoints/K562_fold{fold}_seed{seed}.pth
+    II4:
+      folds: [1, 2, 3, 4, 5, 6]
+      test_csv_pattern: data/processed/II4_6fold/II4_Fold{fold}_Test.csv
+      checkpoint_pattern: results/PriMPT/II4/fold{fold}/checkpoints/II4_fold{fold}_seed{seed}.pth
+    II5:
+      folds: [1, 2, 3]
+      test_csv_pattern: data/processed/II5_3fold/II5_Fold{fold}_Test.csv
+      checkpoint_pattern: results/PriMPT/II5/fold{fold}/checkpoints/II5_fold{fold}_seed{seed}.pth
+    CRISPOR:
+      folds: [1, 2, 3, 4]
+      test_csv_pattern: data/processed/CRISPOR_4fold/CRISPOR_Fold{fold}_Test.csv
+      checkpoint_pattern: results/PriMPT/CRISPOR/fold{fold}/checkpoints/CRISPOR_fold{fold}_seed{seed}.pth
+
+activity_relevance:
+  direction_consistency_cutoff: 0.8
+  signed_effect_ratio_cutoff: 0.10
+  min_datasets: 5
+  std_ddof: 1
+
+output:
+  output_dir: results/explain/activity_relevance_development_macro_average

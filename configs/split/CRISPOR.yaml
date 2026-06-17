@@ -1,0 +1,26 @@
+task: guide_disjoint_kfold
+
+data:
+  dataset_name: CRISPOR
+  input_path: data/raw/CRISPOR.pkl
+  expected_seq_len: 23
+
+columns:
+  guide_col: sgRNA
+  target_col: DNA
+  label_col: label
+
+cleaning:
+  duplicate_policy: drop_conflicts
+
+split:
+  n_splits: 4
+  random_seed: 100
+  n_outer_trials: 100000
+  min_test_pos: 100
+  min_val_pos: 100
+  val_guide_count_options: [2, 3]
+  target_val_fraction: 0.20
+
+output:
+  output_root: data/processed

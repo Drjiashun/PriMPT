@@ -1,0 +1,26 @@
+task: guide_disjoint_kfold
+
+data:
+  dataset_name: HEK293T
+  input_path: data/raw/HEK293T.pkl
+  expected_seq_len: 23
+
+columns:
+  guide_col: sgRNA
+  target_col: DNA
+  label_col: label
+
+cleaning:
+  duplicate_policy: drop_conflicts
+
+split:
+  n_splits: 6
+  random_seed: 100
+  n_outer_trials: 100000
+  min_test_pos: 30
+  min_val_pos: 20
+  val_guide_count_options: [2, 3]
+  target_val_fraction: 0.20
+
+output:
+  output_root: data/processed

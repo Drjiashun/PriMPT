@@ -1,0 +1,36 @@
+task: external_benchmark
+
+data:
+  expected_seq_len: 23
+  sources:
+    HEK293T: data/raw/HEK293T.pkl
+    K562: data/raw/K562.pkl
+    II5: data/raw/II5.pkl
+    II4: data/raw/II4.pkl
+  benchmark_sources:
+    - HEK293T
+    - K562
+    - II5
+  external_test_source: II4
+
+columns:
+  guide_col: sgRNA
+  target_col: DNA
+  label_col: label
+
+cleaning:
+  duplicate_policy: drop_conflicts
+
+split:
+  random_seed: 42
+  val_size: 0.15
+  n_train_val_search_trials: 300000
+  min_val_pos: 25
+  min_train_pos: 100
+  min_val_guides: 3
+  max_val_guides: 12
+  min_val_fraction: 0.08
+  max_val_fraction: 0.25
+
+output:
+  output_dir: data/processed1/external_benchmark

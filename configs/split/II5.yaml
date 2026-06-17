@@ -1,0 +1,26 @@
+task: guide_disjoint_kfold
+
+data:
+  dataset_name: II5
+  input_path: data/raw/II5.pkl
+  expected_seq_len: 23
+
+columns:
+  guide_col: sgRNA
+  target_col: DNA
+  label_col: label
+
+cleaning:
+  duplicate_policy: drop_conflicts
+
+split:
+  n_splits: 3
+  random_seed: 100
+  n_outer_trials: 100000
+  min_test_pos: 10
+  min_val_pos: 10
+  val_guide_count_options: [2, 3]
+  target_val_fraction: 0.20
+
+output:
+  output_root: data/processed

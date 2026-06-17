@@ -1,0 +1,84 @@
+experiment:
+  name: full_model
+
+runtime:
+  cuda_visible_devices: null
+  device: cuda:0
+  seeds: [0, 42, 90, 1024, 2026]
+
+tokenizer:
+  seq_len_no_cls: 23
+  pam_len: 3
+  canonical_pam: NGG
+
+model:
+  d_model: 256
+  nhead: 8
+  num_layers: 4
+  dropout: 0.2
+  cnn_reduce_dim: 196
+  cnn_channels: 64
+  cnn_dropout: 0.15
+  prior_component_dropout: 0.05
+
+training:
+  batch_size: 256
+  lr: 0.00005
+  weight_decay: 0.001
+  epochs: 200
+  patience: 10
+  num_workers: 4
+
+integrity:
+  assert_pair_disjoint: true
+  enforce_guide_disjoint: true
+
+output:
+  experiment_root: results/PriMPT
+
+data:
+  selected_datasets:
+#    - Benchmark_external_II4
+    - K562
+#    - HEK293T
+#    - II4
+#    - II5
+#    - CRISPOR
+
+  datasets:
+    Benchmark_external_II4:
+      type: single
+      split_name: external_test
+      train: data/processed/external_benchmark/external_benchmark_train_85.csv
+      val: data/processed/external_benchmark/external_benchmark_val_15.csv
+      test: data/processed/external_benchmark/external_benchmark_test.csv
+
+    K562:
+      type: kfold
+      root: data/processed/K562_4fold
+      prefix: K562
+      folds: [1, 2, 3, 4]
+
+    HEK293T:
+      type: kfold
+      root: data/processed/HEK293T_6fold
+      prefix: HEK293T
+      folds: [1, 2, 3, 4, 5, 6]
+
+    II4:
+      type: kfold
+      root: data/processed/II4_6fold
+      prefix: II4
+      folds: [1, 2, 3, 4, 5, 6]
+
+    II5:
+      type: kfold
+      root: data/processed/II5_3fold
+      prefix: II5
+      folds: [1, 2, 3]
+
+    CRISPOR:
+      type: kfold
+      root: data/processed/CRISPOR_4fold
+      prefix: CRISPOR
+      folds: [1, 2, 3, 4]
