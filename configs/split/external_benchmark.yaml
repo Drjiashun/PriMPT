@@ -33,4 +33,4 @@ split:
   max_val_fraction: 0.25
 
 output:
-  output_dir: data/processed1/external_benchmark
+  output_dir: data/processed/external_benchmark
