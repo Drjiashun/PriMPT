@@ -27,7 +27,7 @@ training:
   weight_decay: 0.001
   epochs: 200
   patience: 10
-  num_workers: 4
+  num_workers: 16
 
 integrity:
   assert_pair_disjoint: true
