@@ -39,7 +39,7 @@ output:
 data:
   selected_datasets:
 #    - Benchmark_external_II4
-#    - CHANGE-seq
+#    - CHANGEseq
     - K562
 #    - HEK293T
 #    - II4
@@ -57,7 +57,7 @@ data:
     CHANGEseq:
       type: kfold
       root: data/processed/CHANGEseq_5fold
-      prefix: CHANGE-seq
+      prefix: CHANGEseq
       folds: [1, 2, 3, 4, 5]
     
     K562:
