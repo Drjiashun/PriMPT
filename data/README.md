@@ -6,8 +6,9 @@ The data are organized into raw datasets and processed train/validation/test spl
 
 ## Raw Data Sources
 
-Five public CRISPR/Cas9 guide–target activity datasets were used in this project:
+Six public CRISPR/Cas9 guide-target cleavage activity datasets were used in this study:
 
+CHANGE-seq
 K562
 HEK293T
 II4
