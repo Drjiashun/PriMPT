@@ -14,9 +14,9 @@ from primpt.priors import PairPriorTokenizer
 PreparedSplit = Dict[str, Any]
 
 # ===================== 4. Dataset + Cleaning Reports =====================
-REQUIRED_COLUMNS = ["guide_seq", "target_at_guide", "out_logk_measurement"]
+REQUIRED_COLUMNS = ["guide_seq", "target_at_guide", "label"]
 PAIR_COLUMNS = ["guide_seq", "target_at_guide"]
-LABEL_COLUMN = "out_logk_measurement"
+LABEL_COLUMN = "label"
 
 
 def _json_dumps_safe(obj: Any) -> str:
