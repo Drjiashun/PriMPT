@@ -39,6 +39,7 @@ output:
 data:
   selected_datasets:
 #    - Benchmark_external_II4
+#    - CHANGE-seq
     - K562
 #    - HEK293T
 #    - II4
@@ -52,7 +53,13 @@ data:
       train: data/processed/external_benchmark/external_benchmark_train_85.csv
       val: data/processed/external_benchmark/external_benchmark_val_15.csv
       test: data/processed/external_benchmark/external_benchmark_test.csv
-
+    
+    CHANGEseq:
+      type: kfold
+      root: data/processed/CHANGEseq_5fold
+      prefix: CHANGE-seq
+      folds: [1, 2, 3, 4, 5]
+    
     K562:
       type: kfold
       root: data/processed/K562_4fold
