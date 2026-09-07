@@ -27,12 +27,17 @@ ig:
 data:
   seeds: [0, 42, 90, 1024, 2026]
   development_datasets:
+#    - CHANGEseq
 #    - HEK293T
     - K562
 #    - II4
 #    - II5
 #    - CRISPOR
   datasets:
+    CHANGEseq:
+      folds: [1, 2, 3, 4, 5]
+      test_csv_pattern: data/processed/CHANGEseq_5fold/CHANGEseq_Fold{fold}_Test.csv
+      checkpoint_pattern: results/PriMPT/CHANGEseq/fold{fold}/checkpoints/CHANGEseq_fold{fold}_seed{seed}.pth
     HEK293T:
       folds: [1, 2, 3, 4, 5, 6]
       test_csv_pattern: data/processed/HEK293T_6fold/HEK293T_Fold{fold}_Test.csv
@@ -57,7 +62,7 @@ data:
 activity_relevance:
   direction_consistency_cutoff: 0.8
   signed_effect_ratio_cutoff: 0.10
-  min_datasets: 5
+  min_datasets: 6
   std_ddof: 1
 
 output:
