@@ -28,7 +28,7 @@ tensorboard==2.20.0
 The original experiments were conducted with PyTorch 2.7.1 and CUDA 11.8.  
 ## Data Preprocessing
 Data preprocessing is controlled by YAML files under:
-`configs/data/`
+`configs/split/`
 The preprocessing pipeline performs:  
 
 1. Loading of raw CRISPR/Cas9 guide–target activity datasets.
