@@ -1,0 +1,26 @@
+task: guide_disjoint_kfold
+
+data:
+  dataset_name: CHANGEseq
+  input_path: data/raw/CHANGEseq.pkl
+  expected_seq_len: 23
+
+columns:
+  guide_col: sgRNA
+  target_col: DNA
+  label_col: label     #out_logk_measurement
+
+cleaning:
+  duplicate_policy: drop_conflicts
+
+split:
+  n_splits: 5
+  random_seed: 100
+  n_outer_trials: 200000
+  min_test_pos: 4000
+  min_val_pos: 4000
+  val_guide_count_options: [18, 19]
+  target_val_fraction: 0.20
+
+output:
+  output_root: data/processed
