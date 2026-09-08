@@ -1,0 +1,21 @@
+task: changeseq_canonical_guide_disjoint_kfold
+
+data:
+  dataset_name: CHANGEseq
+  input_path: data/raw/CHANGEseq.pkl
+  expected_seq_len: 23
+  canonical_guide_len: 20
+  expected_canonical_guides: 110
+
+cleaning:
+  duplicate_policy: drop_conflicts
+
+split:
+  random_seed: 100
+  n_outer_trials: 200000
+  n_inner_trials: 100000
+  target_val_fraction: 0.20
+  guide_count_tolerance: 2
+
+output:
+  output_root: data/processed
